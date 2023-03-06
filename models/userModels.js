@@ -1,4 +1,29 @@
 const mongoose = require("mongoose");
+const recordsSchema = new mongoose.Schema({
+  hospital:
+  {
+      type: String,
+     
+  },
+  reportNo:
+  {
+      type: Number
+  },
+  disease: {
+      type: String
+  },
+  medicine: {
+      type: String
+  },
+  date: {
+      type: String
+  },
+  time: {
+      type: String
+  }
+
+});
+
 
 const userSchema = new mongoose.Schema({
   name: {
@@ -29,6 +54,13 @@ const userSchema = new mongoose.Schema({
     type: Array,
     default: [],
   },
+  Reports:{
+    type:[recordsSchema]
+  }
+
+  
+  
+,
 });
 
 const userModel = mongoose.model("users", userSchema);

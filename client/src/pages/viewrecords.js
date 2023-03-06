@@ -5,7 +5,7 @@ const Viewrecords = () => {
     const [Records, setRecords] = useState([]);
     useEffect(() => {
         const fetchData =async()=>{
-            const data = await axios.get('http://localhost:8000/viewrecords')
+            const data = await axios.get('http://localhost:8080/6405b2d5edb12a02c873f29b/viewrecords')
             setRecords(data.data);
         }
         fetchData();

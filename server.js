@@ -6,6 +6,7 @@ const cors = require("cors");
 const connectDB = require("./config/db");
 const bodyParser = require('body-parser'); 
 const Medicalrecords = require('./models/Recordsmodel');
+const userModel =require('./models/userModels');
 dotenv.config();
 
 //mongodb connection
@@ -23,15 +24,51 @@ app.use(cors());
 app.use("/api/v1/user", require("./routes/userRoutes"));
 app.use("/api/v1/admin", require("./routes/adminRoutes"));
 app.use("/api/v1/doctor", require("./routes/doctorRoutes"));
+
 app.post('/newrecords', async (req, res) => {
-  let records = new Medicalrecords(req.body);
+  let records = new userModel(req.body);
   let result = await records.save();
   res.send(result)
 
 })
-app.get('/viewrecords', async (req, res) => {
- data=await Medicalrecords.find()
- res.send(data)
+app.post("/:id/reports", async (req, res) => {
+  const { hospital, reportNo, disease, medicine, date, time } = req.body;
+  
+  try {
+    const user = await userModel.findById(req.params.id);
+
+    if (!user) {
+      return res.status(404).json({ message: "User not found" });
+    }
+
+    const newRecord = {
+      hospital,
+      reportNo,
+      disease,
+      medicine,
+      date,
+      time,
+    };
+    
+
+    user.Reports.push(newRecord);
+    await user.save();
+
+    res.json({ message: "Record added to user's Reports array", user });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: "Server error" });
+  }
+});
+
+
+    
+ 
+
+
+app.get('/:id/viewrecords', async (req, res) => {
+ const user = await userModel.findById(req.params.id);
+ res.send(user.Reports)
 })
 
 

@@ -2,9 +2,13 @@ import React, { useState } from "react";
 import './style.css';
 import Navmain from "../components/navbar";
 import Footer from "../components/footer";
+import { useNavigate } from "react-router-dom";
 
 
 function AddNewRecords() {
+  const id=localStorage.getItem("id");
+  const navigate = useNavigate();
+  
   const [hospital, setHospital] = useState("");
   const [reportNo, setReportNo] = useState("");
   const [disease, setDisease] = useState("d1");
@@ -13,9 +17,11 @@ function AddNewRecords() {
   const [date, setDate] = useState("");
   const [time, setTime] = useState("");
   const [otherDisease, setOtherDisease] = useState("");
+  
   const collectRecords = async () => {
+    
     console.log(hospital, reportNo, disease, medicine, date, time);
-    let result = await fetch('http://localhost:8080/newrecords', {
+    let result = await fetch(`http://localhost:8080/${id}/reports`, {
       method: 'post',
       body: JSON.stringify({ hospital, reportNo, disease, medicine, date, time }),
       headers: {
@@ -26,7 +32,10 @@ function AddNewRecords() {
     });
     result = await result.json();
     console.log(result);
+    navigate("/")
+
   };
+
 
 
 
@@ -36,7 +45,7 @@ function AddNewRecords() {
 
       <div className="col p-2 border border-transparent" style={{ width: "90%", marginTop: "90px", backgroundColor: "aliceblue" }}>
         <div style={{ fontSize: "30px", fontWeight: "bold", color: "rgb(51, 82, 120)" }}>Medical Form</div>
-        <form>
+        <form onSubmit={collectRecords}>
           <label htmlFor="Hospital" className="form-label">
             Hospital Name:
           </label>
