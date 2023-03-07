@@ -17,6 +17,7 @@ function AddNewRecords() {
   const [date, setDate] = useState("");
   const [time, setTime] = useState("");
   const [otherDisease, setOtherDisease] = useState("");
+  const [otherHospital, setOtherHospital] = useState("");
   
   const collectRecords = async () => {
     
@@ -61,8 +62,17 @@ function AddNewRecords() {
             <option value="Star Hospital">Star Hospital</option>
             <option value="Hams Hospital">Hams Hospital</option>
             <option value="Kritipur Hospital">Kritipur Hospital</option>
-            <option value="Other">Other</option>
+            <option value="h5">Others</option>
           </select>
+          {hospital === "h5" && (
+            <input
+              type="text"
+              className="form-control mt-2"
+              placeholder="Enter Hospital name"
+              value={otherHospital} 
+              onChange={(e) => setOtherHospital(e.target.value)}
+            />
+          )}
 
           <label htmlFor="ReportNo" className="form-label">
             ReportNo:

@@ -1,13 +1,14 @@
-.col {
+ .col {
   margin: 0 auto;
   padding: 20px;
   border-radius: 5px;
 }
 
-.form-label {
+
+ .form-label {
   margin-bottom: 5px;
 }
-
+ 
 .form-select {
   width: 70%;
   height: 43px;
@@ -35,7 +36,6 @@
   border: 1px solid #ced4da;
   border-radius: 4px;
 }
-
 
 .form-control-file {
   margin-left: 90px;
