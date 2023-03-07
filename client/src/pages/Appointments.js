@@ -3,6 +3,7 @@ import axios from "axios";
 import Layout from "./../components/Layout";
 import moment from "moment";
 import { Table } from "antd";
+import Navmain from "../components/navbar";
 
 const Appointments = () => {
   const [appointments, setAppointments] = useState([]);
@@ -62,10 +63,11 @@ const Appointments = () => {
   ];
 
   return (
-    <Layout>
-      <h1>Appoinmtnets Lists</h1>
+    <div>
+      <Navmain />
+      <h1 style={{"padding-top":"80px"}}>Appointments Lists</h1>
       <Table columns={columns} dataSource={appointments} />
-    </Layout>
+    </div>
   );
 };
 

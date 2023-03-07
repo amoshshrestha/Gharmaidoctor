@@ -3,9 +3,11 @@ import axios from 'axios';
 
 const Viewrecords = () => {
     const [Records, setRecords] = useState([]);
+    
     useEffect(() => {
         const fetchData =async()=>{
-            const data = await axios.get('http://localhost:8080/6405b2d5edb12a02c873f29b/viewrecords')
+            const id=localStorage.getItem("id");
+            const data = await axios.get(  `http://localhost:8080/${id}/viewrecords`)
             setRecords(data.data);
         }
         fetchData();

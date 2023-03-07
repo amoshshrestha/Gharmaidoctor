@@ -6,6 +6,7 @@ import { useNavigate } from "react-router-dom";
 import { showLoading, hideLoading } from "../redux/features/alertSlice";
 import axios from "axios";
 import moment from "moment";
+import Navmain from "../components/navbar";
 const ApplyDoctor = () => {
   const { user } = useSelector((state) => state.user);
 
@@ -45,7 +46,8 @@ const ApplyDoctor = () => {
     }
   };
   return (
-    <Layout>
+    <div>
+      <Navmain />
       <h1 className="text-center">Apply Doctor</h1>
       <Form layout="vertical" onFinish={handleFinish} className="m-3">
         <h4 className="">Personal Details : </h4>
@@ -151,7 +153,7 @@ const ApplyDoctor = () => {
           </Col>
         </Row>
       </Form>
-    </Layout>
+    </div>
   );
 };
 

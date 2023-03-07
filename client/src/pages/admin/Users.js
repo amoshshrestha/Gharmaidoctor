@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Layout from "./../../components/Layout";
+import Navmain from "../../components/navbar";
 import axios from "axios";
 import { Table } from "antd";
 const Users = () => {
@@ -52,10 +53,11 @@ const Users = () => {
   ];
 
   return (
-    <Layout>
+    <div>
+      <Navmain />
       <h1 className="text-center m-2">Users List</h1>
       <Table columns={columns} dataSource={users} />
-    </Layout>
+    </div>
   );
 };
 

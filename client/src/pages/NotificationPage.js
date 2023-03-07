@@ -1,10 +1,11 @@
 import React from "react";
-import Layout from "./../components/Layout";
+
 import { message, Tabs } from "antd";
 import { useSelector, useDispatch } from "react-redux";
 import { showLoading, hideLoading } from "../redux/features/alertSlice";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import Navmain from "../components/navbar";
 
 const NotificationPage = () => {
   const dispatch = useDispatch();
@@ -64,7 +65,8 @@ const NotificationPage = () => {
     }
   };
   return (
-    <Layout>
+    <div>
+      <Navmain/>
       <h4 className="p-3 text-center">Notification Page</h4>
       <Tabs>
         <Tabs.TabPane tab="unRead" key={0}>
@@ -106,7 +108,7 @@ const NotificationPage = () => {
           ))}
         </Tabs.TabPane>
       </Tabs>
-    </Layout>
+    </div>
   );
 };
 
