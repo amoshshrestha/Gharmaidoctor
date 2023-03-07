@@ -52,6 +52,14 @@ function App() {
               }
             />
             <Route
+              path="/home"
+              element={
+                
+                  <Homepg />
+                
+              }
+            />
+            <Route
               path="/bookappointment"
               element={
                 

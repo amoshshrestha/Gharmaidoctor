@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import Layout from "./../../components/Layout";
 
 import axios from "axios";
+import Navmain from "../../components/navbar";
 
 import moment from "moment";
 import { message, Table } from "antd";
@@ -94,10 +95,11 @@ const DoctorAppointments = () => {
     },
   ];
   return (
-    <Layout>
+    <div>
+      <Navmain />
       <h1>Appoinmtnets Lists</h1>
       <Table columns={columns} dataSource={appointments} />
-    </Layout>
+    </div>
   );
 };
 

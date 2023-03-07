@@ -6,6 +6,7 @@ import { Col, Form, Input, Row, TimePicker, message } from "antd";
 import { useSelector, useDispatch } from "react-redux";
 import { showLoading, hideLoading } from "../../redux/features/alertSlice";
 import moment from "moment";
+import Navmain from "../../components/navbar";
 
 const Profile = () => {
   const { user } = useSelector((state) => state.user);
@@ -74,7 +75,8 @@ const Profile = () => {
     //eslint-disable-next-line
   }, []);
   return (
-    <Layout>
+    <div>
+      <Navmain />
       <h1>Manage Profile</h1>
       {doctor && (
         <Form
@@ -193,7 +195,7 @@ const Profile = () => {
           </Row>
         </Form>
       )}
-    </Layout>
+    </div>
   );
 };
 

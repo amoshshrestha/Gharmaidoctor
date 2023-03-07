@@ -3,6 +3,7 @@ import axios from "axios";
 import Layout from "./../components/Layout";
 import { Row } from "antd";
 import DoctorList from "../components/DoctorList";
+import Navmain from "../components/navbar";
 const HomePage = () => {
   const [doctors, setDoctors] = useState([]);
   // login user data
@@ -30,12 +31,14 @@ const HomePage = () => {
     getUserData();
   }, []);
   return (
-    <Layout>
+    <div className="Homepage">
+    <Navmain />
       <h1 className="text-center">Home Page</h1>
       <Row>
         {doctors && doctors.map((doctor) => <DoctorList doctor={doctor} />)}
       </Row>
-    </Layout>
+      </div>
+    
   );
 };
 
