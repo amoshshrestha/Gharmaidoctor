@@ -33,7 +33,7 @@ function AddNewRecords() {
     });
     result = await result.json();
     console.log(result);
-    navigate("/")
+    navigate("/medicalreport")
 
   };
 

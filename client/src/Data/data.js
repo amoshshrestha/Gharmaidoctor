@@ -1,7 +1,7 @@
 export const userMenu = [
   {
     name: "Home",
-    path: "/",
+    path: "/home",
     icon: "fa-solid fa-house",
   },
   {
@@ -14,11 +14,7 @@ export const userMenu = [
     path: "/apply-doctor",
     icon: "fa-solid fa-user-doctor",
   },
-  {
-    name: "Profile",
-    path: "/profile",
-    icon: "fa-solid fa-user",
-  },
+ 
 ];
 
 // admin menu
@@ -39,9 +35,27 @@ export const adminMenu = [
     path: "/admin/users",
     icon: "fa-solid fa-user",
   },
+  
+];
+
+export const SpecialityMenu = [
   {
-    name: "Profile",
-    path: "/profile",
-    icon: "fa-solid fa-user",
+    imgsrc:"images/head.png",
+    name:"Ent Center",
+    description:"Pathologicals,conditions of the ear, nose or throat.",
   },
+
+  {
+    imgsrc:"images/dentist.png",
+    name:"Ent Center",
+    description:"Pathologicals,conditions of the ear, nose or throat."
+    
+  },
+  {
+    imgsrc:"images/head.png",
+    name:"Ent Center",
+    description:"Pathologicals,conditions of the ear, nose or throat."
+    
+  },
+  
 ];

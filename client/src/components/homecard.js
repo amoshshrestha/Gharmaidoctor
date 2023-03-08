@@ -3,7 +3,7 @@ import Card from 'react-bootstrap/Card';
 
 function Homecard(props) {
   return (
-    <Card className='align-items-center'style={{ width: '30rem', height:'10rem'}}>
+    <Card className='align-items-center'style={{ width: '25rem', height:'10rem'}}>
       
       <Card.Body className='d-flex align-items-center'>
       <Card.Img variant="top" src={props.imgsrc} style={{height:'130px',width:'130px'}} />

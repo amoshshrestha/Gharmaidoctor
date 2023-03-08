@@ -38,6 +38,14 @@ const userSchema = new mongoose.Schema({
     type: String,
     required: [true, "password is require"],
   },
+  citizenshipno:{
+    type: String,
+    required:[true,"citizenshipno is required"]
+  },
+  dob:{
+    type:String,
+    required: [true,"dob is required"]
+  },
   isAdmin: {
     type: Boolean,
     default: false,

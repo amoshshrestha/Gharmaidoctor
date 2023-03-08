@@ -5,43 +5,7 @@
 }
 
 
- .form-label {
-  margin-bottom: 5px;
-}
  
-.form-select {
-  width: 70%;
-  height: 43px;
-  margin-left: 15%;
-  padding: 6px 12px;
-  font-size: 14px;
-  font-weight: 400;
-  line-height: 1.5;
-  color: #495057;
-  background-color: #fff;
-  border: 1px solid #ced4da;
-  border-radius: 4px;
-}
-
-.form-control {
-  width: 70%;
-  height: 43px;
-  margin-left: 15%;
-  padding: 6px 12px;
-  font-size: 14px;
-  font-weight: 400;
-  line-height: 1.5;
-  color: #495057;
-  background-color: #fff;
-  border: 1px solid #ced4da;
-  border-radius: 4px;
-}
-
-.form-control-file {
-  margin-left: 90px;
-  margin-top: 5px;
-  margin-bottom: 10px;
-} 
 
 .btn-secondary { 
   background-color: rgb(51, 82, 120);

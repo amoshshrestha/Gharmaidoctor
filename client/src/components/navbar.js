@@ -35,11 +35,7 @@ function Navmain() {
       icon: "fa-solid fa-list",
     },
 
-    {
-      name: "Profile",
-      path: `/doctor/profile/${user?._id}`,
-      icon: "fa-solid fa-user",
-    },
+    ,
   ];
   const SidebarMenu = user?.isAdmin
     ? adminMenu
@@ -75,6 +71,8 @@ function Navmain() {
               
             </NavDropdown> */}
             
+            <LinkContainer to="/profile"><Nav.Link><h5>{user?.name}</h5></Nav.Link>
+            </LinkContainer>
             <LinkContainer to="/login"><Button variant="outline-success" onClick={handleLogout}>Log out</Button></LinkContainer>
           </Nav>
         </Navbar.Collapse>

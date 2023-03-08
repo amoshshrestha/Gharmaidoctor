@@ -5,6 +5,7 @@ import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { showLoading, hideLoading } from "../redux/features/alertSlice";
+import Image from "react-bootstrap/esm/Image";
 const Register = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -34,6 +35,7 @@ const Register = () => {
           onFinish={onfinishHandler}
           className="register-form"
         >
+          <Image src="images/logofinale.png" width='350' height='70'/>
           <h3 className="text-center">Register From</h3>
           <Form.Item label="Name" name="name">
             <Input type="text" required />
@@ -44,12 +46,33 @@ const Register = () => {
           <Form.Item label="Password" name="password">
             <Input type="password" required />
           </Form.Item>
-          <Link to="/login" className="m-2">
-            Already user login here
-          </Link>
-          <button className="btn btn-primary" type="submit">
+          <Form.Item label="Citizenship No." name="citizenshipno">
+            <Input type="string" required />
+          </Form.Item>
+          <Form.Item label="date" name="dob">
+          <Input
+            type="Date"
+            required
+          />
+          </Form.Item>
+          <Form.Item label="Please Upload A Photo of Citizenship" name="citizenshipphoto">
+          <input
+              type="file"
+              className="form-control-file"
+              
+              
+              
+            />
+            </Form.Item>
+            <button className="btn btn-primary" type="submit">
             Register
           </button>
+          <Link to="/login" className="m-2">
+            <button className="btn btn-primary">
+            Already user login here
+            </button>
+          </Link>
+          
         </Form>
       </div>
     </>

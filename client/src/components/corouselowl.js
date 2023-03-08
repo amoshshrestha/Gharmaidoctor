@@ -2,6 +2,7 @@ import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
 import Corouselcard from './spccard';
 import './styleCss/corouselspec.css';
+import { SpecialityMenu } from '../Data/data';
 
 function Corouselspec() {
     const responsive = {
@@ -27,17 +28,14 @@ function Corouselspec() {
         <div>
         <Carousel responsive={responsive}
         autoPlaySpeed={500}>
-<Corouselcard mt-90 imgsrc='images/head.png'name='Ent Center' description='Pathologicals,conditions of the ear, nose or throat.'/>
+          {SpecialityMenu.map((menu) => {
+                
+                return (
 
-  <div><Corouselcard mt-90 imgsrc='images/head.png'name='Ent Center' description='Pathologicals,conditions of the ear, nose or throat.'/></div>
-  <div><Corouselcard mt-90 imgsrc='images/head.png'name='Ent Center' description='Pathologicals,conditions of the ear, nose or throat.'/></div>
-  <Corouselcard mt-90 imgsrc='images/head.png'name='Ent Center' description='Pathologicals,conditions of the ear, nose or throat.'/>
-  <Corouselcard mt-90 imgsrc='images/head.png'name='Ent Center' description='Pathologicals,conditions of the ear, nose or throat.'/>
-  <Corouselcard mt-90 imgsrc='images/head.png'name='Ent Center' description='Pathologicals,conditions of the ear, nose or throat.'/>
-  <Corouselcard mt-90 imgsrc='images/head.png'name='Ent Center' description='Pathologicals,conditions of the ear, nose or throat.'/>
-  <Corouselcard mt-90 imgsrc='images/head.png'name='Ent Center' description='Pathologicals,conditions of the ear, nose or throat.'/>
-  <Corouselcard mt-90 imgsrc='images/head.png'name='Ent Center' description='Pathologicals,conditions of the ear, nose or throat.'/>
-  <Corouselcard mt-90 imgsrc='images/head.png'name='Ent Center' description='Pathologicals,conditions of the ear, nose or throat.'/>
+                  <Corouselcard imgsrc={menu.imgsrc}name={menu.name} description={menu.description}/>
+            )})}
+
+  
 
 </Carousel>
 </div>
