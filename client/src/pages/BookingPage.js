@@ -85,6 +85,15 @@ const BookingPage = () => {
           },
         }
       );
+      const data={
+        doctorId: params.doctorId,
+        userId: user._id,
+        doctorInfo: doctors,
+        userInfo: user,
+        date: date,
+        time: time,
+      }
+      console.log(data)
       dispatch(hideLoading());
       if (res.data.success) {
         message.success(res.data.message);
@@ -101,9 +110,9 @@ const BookingPage = () => {
   }, []);
   return (
     <div>
-      <Navmain/>
+      
       <h3>Booking Page</h3>
-      <div className="container m-2">
+      <div className="container m-2" style={{paddingTop:"90px"}}>
         {doctors && (
           <div>
             <h4>

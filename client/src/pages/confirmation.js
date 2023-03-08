@@ -1,10 +1,57 @@
 import Card from 'react-bootstrap/Card';
-import { Button } from 'react-bootstrap';
+import { Button } from 'react-bootstrap';import React, { useState, useEffect } from "react";
+
+import { useParams } from "react-router-dom";
+import axios from "axios";
+import { DatePicker, message, TimePicker } from "antd";
+import moment from "moment";
+import { useDispatch, useSelector } from "react-redux";
+import { showLoading, hideLoading } from "../redux/features/alertSlice";
 
 function Confirm(props) {
   const fee = parseInt(props.Fees);
    const tax = 0.13 * fee;
    const Total = tax + fee;
+   const { user } = useSelector((state) => state.user);
+  const params = useParams();
+  const [doctors, setDoctors] = useState([]);
+  const [date, setDate] = useState("");
+  const [time, setTime] = useState();
+  const [isAvailable, setIsAvailable] = useState(false);
+  const dispatch = useDispatch();
+   const handleBooking = async () => {
+    try {
+      setIsAvailable(true);
+      if (!date && !time) {
+        return alert("Date & Time Required");
+      }
+      dispatch(showLoading());
+      const res = await axios.post(
+        "/api/v1/user/book-appointment",
+        {
+          doctorId: params.doctorId,
+          userId: user._id,
+          doctorInfo: doctors,
+          userInfo: user,
+          date: date,
+          time: time,
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+          },
+        }
+      );
+      dispatch(hideLoading());
+      if (res.data.success) {
+        message.success(res.data.message);
+      }
+    } catch (error) {
+      dispatch(hideLoading());
+      console.log(error);
+    }
+  };
+
   return (
     <div className='d-flex' style={{justifyContent:'center'}}>
     <Card style={{ width: '60rem'}}>
@@ -30,7 +77,7 @@ function Confirm(props) {
             <Card.Text style={{ fontSize: '19px',fontFamily:'Arial', fontWeight: 'bold', marginBottom: '0.5rem' }}>Doctor Fee:Rs.{fee}</Card.Text>
             <Card.Text style={{ fontSize: '19px',fontFamily:'Arial', fontWeight: 'bold', marginBottom: '0.5rem' }}>Tax:Rs.{tax}</Card.Text>
             <Card.Text style={{ fontSize: '19px',fontFamily:'Arial', fontWeight: 'bold', marginBottom: '0.5rem' }}>Total Fee:Rs.{Total}</Card.Text>
-            <Button variant="primary" style={{ fontSize: '19px', fontWeight: 'bold',padding:'15px', width: '250px'}}>Confirm Appointment</Button>
+            <Button variant="primary" onClick={handleBooking} style={{ fontSize: '19px', fontWeight: 'bold',padding:'15px', width: '250px'}}>Confirm Appointment</Button>
             </div>
         
       </Card.Body>

@@ -19,6 +19,7 @@ import Homepg from "./pages/home";
 import BookAppointments from "./pages/bookappointment";
 import Viewrecords from "./pages/viewrecords";
 import Medicalreport from "./pages/medicalrecord";
+import Confirm from "./pages/confirmation";
 function App() {
   const { loading } = useSelector((state) => state.alerts);
   return (
@@ -89,6 +90,14 @@ function App() {
               element={
                 <ProtectedRoute>
                   <Doctors />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/confirmation"
+              element={
+                <ProtectedRoute>
+                  <Confirm />
                 </ProtectedRoute>
               }
             />
