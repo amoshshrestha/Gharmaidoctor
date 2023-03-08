@@ -40,12 +40,11 @@ const userSchema = new mongoose.Schema({
   },
   citizenshipno:{
     type: String,
-    required:[true,"citizenshipno is required"]
   },
-  dob:{
+  date:{
     type:String,
-    required: [true,"dob is required"]
   },
+ 
   isAdmin: {
     type: Boolean,
     default: false,
@@ -61,6 +60,9 @@ const userSchema = new mongoose.Schema({
   seennotification: {
     type: Array,
     default: [],
+  },
+  citizenship:{
+    type:String,
   },
   Reports:{
     type:[recordsSchema]

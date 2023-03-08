@@ -13,11 +13,19 @@ const registerController = async (req, res) => {
         .status(200)
         .send({ message: "User Already Exist", success: false });
     }
+    let citizenship= req.file.path
     const password = req.body.password;
     const salt = await bcrypt.genSalt(10);
     const hashedPassword = await bcrypt.hash(password, salt);
     req.body.password = hashedPassword;
-    const newUser = new userModel(req.body);
+    const newUser = new userModel({
+      name:req.body.name,
+      email:req.body.email,
+      password:req.body.password,
+      citizenshipno:req.body.citizenshipno,
+      date:req.body.date,
+      citizenship:req.file.path,
+  });
     await newUser.save();
     res.status(201).send({ message: "Register Sucessfully", success: true });
   } catch (error) {

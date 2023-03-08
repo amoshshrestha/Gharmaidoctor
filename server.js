@@ -7,14 +7,24 @@ const connectDB = require("./config/db");
 const bodyParser = require('body-parser'); 
 const Medicalrecords = require('./models/Recordsmodel');
 const userModel =require('./models/userModels');
+const multer= require('multer');
 dotenv.config();
+
 
 //mongodb connection
 connectDB();
 
 //rest obejct
 const app = express();
-
+const fileStorageEngine=multer.diskStorage({
+  destination:(req,file,cb)=>{
+      cb(null,'./images')
+  },
+  filename:(req,file,cb)=>{
+      cb(null,Date.now()+"-"+file.originalname)
+  },
+})
+const upload=multer({storage:fileStorageEngine})
 //middlewares
 app.use(express.json());
 app.use(moragan("dev"));
@@ -24,7 +34,7 @@ app.use(cors());
 app.use("/api/v1/user", require("./routes/userRoutes"));
 app.use("/api/v1/admin", require("./routes/adminRoutes"));
 app.use("/api/v1/doctor", require("./routes/doctorRoutes"));
-
+app.use('/images',express.static('./images'))
 app.post('/newrecords', async (req, res) => {
   let records = new userModel(req.body);
   let result = await records.save();
@@ -61,8 +71,36 @@ app.post("/:id/reports", async (req, res) => {
   }
 });
 
-
-    
+app.post('/citizenshipfie',upload.single('citizenship'),(req,res)=>{
+  console.log("called")
+  let data=new userModel({
+      citizenship:req.file.path,
+  })
+  data.save()
+  .then(result=>{
+      res.send("succesfully added")
+  })
+  .catch(error=>{
+      console.log(error)
+  })
+})
+app.post('/citizenshipfile',upload.single('citizenship'),(req,res)=>{
+  let data=new userModel ({
+      name:req.body.name,
+      email:req.body.email,
+      password:req.body.password,
+      citizenshipno:req.body.citizenshipno,
+      date:req.body.date,
+      citizenship:req.file.path,
+  })
+  data.save()
+  .then(result=>{
+      res.send("succesfully added")
+  })
+  .catch(error=>{
+      console.log(error)
+  })
+})   
  
 
 
