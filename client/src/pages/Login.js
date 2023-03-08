@@ -5,6 +5,7 @@ import { useDispatch } from "react-redux";
 import { showLoading, hideLoading } from "../redux/features/alertSlice";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
+import Image from "react-bootstrap/esm/Image";
 
 const Login = () => {
   const navigate = useNavigate();
@@ -31,13 +32,18 @@ const Login = () => {
     }
   };
   return (
+    <div>
+    
     <div className="form-container ">
+    
+      
       <Form
         layout="vertical"
         onFinish={onfinishHandler}
         className="register-form"
       >
-        <h3 className="text-center">Login From</h3>
+        <Image src="images/logofinale.png" width='350' height='70'/>
+        <h3 className="text-center">Log In</h3>
 
         <Form.Item label="Email" name="email">
           <Input type="email" required />
@@ -45,13 +51,17 @@ const Login = () => {
         <Form.Item label="Password" name="password">
           <Input type="password" required />
         </Form.Item>
-        <Link to="/register" className="m-2">
-          Not a user Register here
-        </Link>
         <button className="btn btn-primary" type="submit">
-          Login
+          Sign In
         </button>
+        <Link to="/register" className="m-2">
+          <button className="btn btn-primary">
+         Sign up
+         </button>
+        </Link>
+        
       </Form>
+    </div>
     </div>
   );
 };

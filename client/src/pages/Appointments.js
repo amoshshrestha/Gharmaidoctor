@@ -65,7 +65,7 @@ const Appointments = () => {
   return (
     <div>
       <Navmain />
-      <h1 style={{"padding-top":"80px"}}>Appointments Lists</h1>
+      <h1 style={{"paddingTop":"80px"}}>Appointments Lists</h1>
       <Table columns={columns} dataSource={appointments} />
     </div>
   );

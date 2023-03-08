@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import Navmain from '../components/navbar';
 
 const Viewrecords = () => {
     const [Records, setRecords] = useState([]);
@@ -14,8 +15,9 @@ const Viewrecords = () => {
     },[]
     )
     return(
-
-    <div className='row'>
+<div>
+    <Navmain />
+    <div className='row' style={{paddingTop:"90px"}}>
                 <div className='table-responsive'>
                     <table className='table table-striped table-hover table-bordered'>
                         <thead>
@@ -42,6 +44,7 @@ const Viewrecords = () => {
                     </table>
                 </div>
 
+                </div>
                 </div>
 
     )
