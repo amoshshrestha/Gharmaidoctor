@@ -36,6 +36,7 @@ const doctorSchema = new mongoose.Schema(
     imageurl:{
       type:String,
       
+      
     },
     experience: {
       type: String,

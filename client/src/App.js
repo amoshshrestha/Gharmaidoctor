@@ -21,6 +21,9 @@ import Viewrecords from "./pages/viewrecords";
 import Medicalreport from "./pages/medicalrecord";
 import Confirm from "./pages/confirmation";
 import Navmain from "./components/navbar";
+import OnlineConsultation from "./pages/consultation";
+import Specialitypage from "./pages/specialitybooking";
+import DoctorConsult from "./pages/doctor/doctorconsultation";
 function App() {
   const { loading } = useSelector((state) => state.alerts);
   return (
@@ -39,11 +42,27 @@ function App() {
               }
             />
             <Route
+              path="/onlineconsultation"
+              element={
+                <ProtectedRoute>
+                  <OnlineConsultation />
+                </ProtectedRoute>
+              }
+            />
+            <Route
               path="/admin/users"
               element={
                 <ProtectedRoute>
                   <Users />
                 </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/doctor/:specialization"
+              element={
+                // <ProtectedRoute>
+                  <Specialitypage />
+                // </ProtectedRoute>
               }
             />
             <Route
@@ -57,16 +76,19 @@ function App() {
             <Route
               path="/addnewrecords"
               element={
-                
+                <ProtectedRoute>
                   <AddNewRecords />
+                  </ProtectedRoute>
+                  
                 
               }
             />
             <Route
-              path="/home"
+              path="/"
               element={
-                
+                <ProtectedRoute>
                   <Homepg />
+                  </ProtectedRoute>
                 
               }
             />
@@ -74,16 +96,16 @@ function App() {
               path="/bookappointment"
               element={
                 
-                  <BookAppointments />
-                
+                <ProtectedRoute><BookAppointments />
+                </ProtectedRoute>
               }
             />
             <Route
               path="/viewrecords"
               element={
-                
-                  <Viewrecords />
-                
+                <ProtectedRoute><Viewrecords />
+                </ProtectedRoute>
+                  
               }
             />
             <Route
@@ -160,7 +182,15 @@ function App() {
               }
             />
             <Route
-              path="/"
+              path="/doctor-consultations"
+              element={
+                <ProtectedRoute>
+                  <DoctorConsult />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/home"
               element={
                 <ProtectedRoute>
                   <HomePage />

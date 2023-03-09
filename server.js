@@ -109,6 +109,19 @@ app.get('/:id/viewrecords', async (req, res) => {
  res.send(user.Reports)
 })
 
+app.put("/updateuserstatus",async (req, res) => {
+  
+  const data= userModel.findOne({_id:req.body.userId});
+  if(data){
+    let result= await userModel.updateOne({_id:req.body.userId},{$set:{status:req.body.status}})
+    res.status(201).send({
+      success: true,
+      message: "Account Status Updated",
+      data: result,
+    });
+  }
+
+})
 
 
 const port = process.env.PORT || 8080;

@@ -59,6 +59,23 @@ const getDoctorByIdController = async (req, res) => {
     });
   }
 };
+const getDoctorBySpecController = async (req, res) => {
+  try {
+    const doctor = await doctorModel.find({ specialization: req.body.specialization });
+    res.status(200).send({
+      success: true,
+      message: "Sigle Doc Info Fetched",
+      data: doctor,
+    });
+  } catch (error) {
+    console.log(error);
+    res.status(500).send({
+      success: false,
+      error,
+      message: "Erro in Single docot info",
+    });
+  }
+};
 
 const doctorAppointmentsController = async (req, res) => {
   try {
@@ -116,4 +133,5 @@ module.exports = {
   getDoctorByIdController,
   doctorAppointmentsController,
   updateStatusController,
+  getDoctorBySpecController,
 };

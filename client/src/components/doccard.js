@@ -12,11 +12,11 @@ function Doctorcard({ doctor }) {
         className="card m-2"
         
       >
-    <Card style={{ width: '367px',marginLeft:'10px'}}>
+    <Card style={{ width: '390px',marginLeft:'10px'}}>
 
-      <Card.Body className='d-flex' style={{width:'345px',marginLeft:'25px'}}>
-      <Card.Img variant="top" src={doctor.imageurl} style={{height:'100px',width:'100px',borderRadius:'50px'}} />
-      <div>
+      <Card.Body className='d-flex' style={{width:'345px',marginLeft:'25px',alignItems:"center"}}>
+      <Card.Img variant='center' src={doctor.imageurl} style={{height:'100px',width:'100px',borderRadius:'50px'}} />
+      <div style={{justifyContent:"end"}}>
         <Card.Title>Dr. {doctor.firstName} {doctor.lastName}</Card.Title>
         <Card.Text>
         <p>

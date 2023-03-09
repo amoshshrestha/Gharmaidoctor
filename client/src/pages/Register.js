@@ -86,7 +86,7 @@ function handleImage(e) {
           className="register-form"
         >
           <Image src="images/logofinale.png" width='350' height='70'/>
-          <h3 className="text-center">Register From</h3>
+          <h3 className="text-center">Register</h3>
           <Form.Item label="Name" name="name">
           <Input required type="text" placeholder="Enter Name" value={name}
           onChange={(e) => setName(e.target.value)} />

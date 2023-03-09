@@ -1,11 +1,18 @@
 export const userMenu = [
   {
     name: "Home",
-    path: "/home",
+    path: "/",
     icon: "fa-solid fa-house",
   },
+  
+  
   {
-    name: "Appointments",
+    name: "Book an appointment",
+    path: "/bookappointment",
+    
+  },
+  {
+    name: "My Appointments",
     path: "/appointments",
     icon: "fa-solid fa-list",
   },
@@ -17,7 +24,7 @@ export const userMenu = [
  
 ];
 
-// admin menu
+
 export const adminMenu = [
   {
     name: "Home",
