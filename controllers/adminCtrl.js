@@ -66,9 +66,10 @@ const changeAccountStatusController = async (req, res) => {
   }
 };
 const changeAccountUserStatusController = async (req, res) => {
+  
   try {
     const { userId, status } = req.body;
-    console.log(userId);
+    
     
     const user = await userModel.findByIdAndUpdate(userId, { status });
     

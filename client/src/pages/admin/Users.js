@@ -3,9 +3,12 @@ import Layout from "./../../components/Layout";
 import Navmain from "../../components/navbar";
 import { message, Table } from "antd";
 import axios from "axios";
+import { Link } from "react-router-dom";
 
 const Users = () => {
   const [users, setUsers] = useState([]);
+  
+  
 
   //getUsers
   const getUsers = async () => {
@@ -17,17 +20,24 @@ const Users = () => {
       });
       if (res.data.success) {
         setUsers(res.data.data);
+        
+        
       }
     } catch (error) {
       console.log(error);
     }
   };
-  const handleCitizenship=() => {}
+
+  
   const handleAccountStatus = async (record, status) => {
+    
+    const userId= record._id
+    
     try {
-      const res = await axios.post(
-        "/api/v1/admin/changeuserAccountStatus",
-        { userId: record._id, status: status },
+
+      const res = await axios.put(
+        "/updateuserstatus",
+        { userId: userId, status: status },
         {
           headers: {
             Authorization: `Bearer ${localStorage.getItem("token")}`,
@@ -37,6 +47,8 @@ const Users = () => {
       if (res.data.success) {
         message.success(res.data.message);
         window.location.reload();
+        
+        
       }
     } catch (error) {
       message.error("Something Went Wrong");
@@ -47,7 +59,8 @@ const Users = () => {
     getUsers();
   }, []);
 
-  // antD table col
+
+
   const columns = [
     {
       title: "Name",
@@ -86,7 +99,7 @@ const Users = () => {
             
             <button
               className="btn btn-success"
-              onClick={() => handleAccountStatus(record, "approved")}
+              onClick={() => {handleAccountStatus(record, "approved")}}
             >
               Approve
             </button>
@@ -97,11 +110,14 @@ const Users = () => {
       ),
     },
     {
-      title: "Actions",
-      dataIndex: "actions",
+      title: "citizenship",
+      dataIndex: "citizenship",
       render: (text, record) => (
+        
         <div className="d-flex">
-          <button className="btn btn-danger" onClick={handleCitizenship}>citizenship</button>
+          
+          <a href={`http://localhost:8080/${record.citizenship}`}><button className="btn btn-danger" >citizenship</button></a>
+          
         </div>
       ),
     },
@@ -112,6 +128,7 @@ const Users = () => {
       <Navmain />
       <h1 className="text-center m-2">Users List</h1>
       <Table columns={columns} dataSource={users} />
+      
     </div>
   );
 };

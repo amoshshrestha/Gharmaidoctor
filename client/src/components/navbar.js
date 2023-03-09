@@ -34,6 +34,11 @@ function Navmain() {
       path: "/doctor-appointments",
       icon: "fa-solid fa-list",
     },
+    {
+      name: "Consultations",
+      path: "/doctor-consultations",
+      icon: "fa-solid fa-list",
+    }
 
     ,
   ];
@@ -71,9 +76,11 @@ function Navmain() {
               
             </NavDropdown> */}
             
-            <LinkContainer to="/profile"><Nav.Link><h5>{user?.name}</h5></Nav.Link>
-            </LinkContainer>
-            <LinkContainer to="/login"><Button variant="outline-success" onClick={handleLogout}>Log out</Button></LinkContainer>
+            <Nav.Link className='d-flex' style={{alignItems:"center"}}>
+              <img src="http://localhost:8080/images/user.png"  width='30' height='30'/>
+              <h style={{fontSize:"16px"}}>{user?.name}</h></Nav.Link>
+            
+            <LinkContainer to="/login"><Button variant="outline-success" onClick={handleLogout} style={{alignItems:"center"}}>Log out</Button></LinkContainer>
           </Nav>
         </Navbar.Collapse>
       </Container>

@@ -3,6 +3,7 @@ import 'react-multi-carousel/lib/styles.css';
 import Corouselcard from './spccard';
 import './styleCss/corouselspec.css';
 import { SpecialityMenu } from '../Data/data';
+import { Link } from 'react-router-dom';
 
 function Corouselspec() {
     const responsive = {
@@ -32,7 +33,7 @@ function Corouselspec() {
                 
                 return (
 
-                  <Corouselcard imgsrc={menu.imgsrc}name={menu.name} description={menu.description}/>
+                  <Link to={`/doctor/${menu.name}`}><Corouselcard imgsrc={menu.imgsrc}name={menu.name} description={menu.description}/></Link>
             )})}
 
   
