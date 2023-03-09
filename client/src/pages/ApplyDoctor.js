@@ -94,8 +94,8 @@ const ApplyDoctor = () => {
             </Form.Item>
           </Col>
           <Col xs={24} md={24} lg={8}>
-            <Form.Item label="Website" name="website">
-              <Input type="text" placeholder="your website" />
+            <Form.Item label="Nmc number:" name="Nmcno" required>
+              <Input type="number" placeholder="your Nepal Medical Council Number" />
             </Form.Item>
           </Col>
           <Col xs={24} md={24} lg={8}>

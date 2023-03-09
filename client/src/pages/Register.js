@@ -16,7 +16,7 @@ const Register = () => {
   const [password, setPassword] = useState(undefined);
   const [date, setDate] = useState(undefined);
   const [citizenshipno, setCitizenshipno] = useState(undefined);
-  const [error, setError] = useState(undefined);
+  const [phno, setPhno] = useState(undefined);
 function handleImage(e) {
     setCitizenship(e.target.files[0]);
   }
@@ -34,6 +34,7 @@ function handleImage(e) {
     userobj.append("password", password);
     userobj.append("citizenshipno", citizenshipno);
     userobj.append("date", date);
+    userobj.append("phno", phno);
     userobj.append("citizenship", citizenship);
     const res= await axios.post("/api/v1/user/register", userobj)
 
@@ -78,7 +79,7 @@ function handleImage(e) {
   // };
   return (
     <>
-      <div className="form-container ">
+      <div className="form-container " style={{marginTop:"80px"}}>
         <Form
           layout="vertical"
           onFinish={callapi}
@@ -98,6 +99,10 @@ function handleImage(e) {
           <Form.Item label="Password" name="password">
           <Input required type="password" placeholder="Enter Password" value={name}
           onChange={(e) => setPassword(e.target.value)} />
+          </Form.Item>
+          <Form.Item label="Phone Number" name="phno">
+          <Input required type="text" placeholder="Enter Phone Number" value={name}
+          onChange={(e) => setPhno(e.target.value)} />
           </Form.Item>
           <Form.Item label="Citizenship No." name="citizenshipno">
           <Input required type="text" placeholder="Enter Citizenship number" value={name}

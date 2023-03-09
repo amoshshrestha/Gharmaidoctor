@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 
 function Doctorcard({ doctor }) {
   const navigate = useNavigate();
+  
 
   return (
     <div
@@ -14,7 +15,7 @@ function Doctorcard({ doctor }) {
     <Card style={{ width: '367px',marginLeft:'10px'}}>
 
       <Card.Body className='d-flex' style={{width:'345px',marginLeft:'25px'}}>
-      {/* <Card.Img variant="top" src={doctor.imgsrc} style={{height:'100px',width:'100px',borderRadius:'50px'}} /> */}
+      <Card.Img variant="top" src={doctor.imageurl} style={{height:'100px',width:'100px',borderRadius:'50px'}} />
       <div>
         <Card.Title>Dr. {doctor.firstName} {doctor.lastName}</Card.Title>
         <Card.Text>

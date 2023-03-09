@@ -65,9 +65,32 @@ const changeAccountStatusController = async (req, res) => {
     });
   }
 };
-
+const changeAccountUserStatusController = async (req, res) => {
+  try {
+    const { userId, status } = req.body;
+    console.log(userId);
+    
+    const user = await userModel.findByIdAndUpdate(userId, { status });
+    
+    
+    await user.save();
+    res.status(201).send({
+      success: true,
+      message: "Account Status Updated",
+      data: user,
+    });
+  } catch (error) {
+    console.log(error);
+    res.status(500).send({
+      success: false,
+      message: "Error in Account Status",
+      error,
+    });
+  }
+};
 module.exports = {
   getAllDoctorsController,
   getAllUsersController,
   changeAccountStatusController,
+  changeAccountUserStatusController,
 };

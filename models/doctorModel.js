@@ -21,8 +21,9 @@ const doctorSchema = new mongoose.Schema(
       type: String,
       required: [true, "email is required"],
     },
-    website: {
+    Nmcno: {
       type: String,
+      required: [true, "Nmc Number is required"],
     },
     address: {
       type: String,
@@ -31,6 +32,10 @@ const doctorSchema = new mongoose.Schema(
     specialization: {
       type: String,
       required: [true, "specialization is require"],
+    },
+    imageurl:{
+      type:String,
+      
     },
     experience: {
       type: String,
