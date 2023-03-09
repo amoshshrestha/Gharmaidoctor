@@ -47,15 +47,38 @@ export const SpecialityMenu = [
 
   {
     imgsrc:"images/dentist.png",
-    name:"Ent Center",
-    description:"Pathologicals,conditions of the ear, nose or throat."
+    name:"Dental Specialist",
+    description:"Dental Cleanings,fillings,oral surgery,extractions."
     
   },
   {
-    imgsrc:"images/head.png",
-    name:"Ent Center",
-    description:"Pathologicals,conditions of the ear, nose or throat."
+    imgsrc:"images/clinic.png",
+    name:"General Clinic",
+    description:"Minor Medical Treatment, routine health screening."
     
+  },
+  {
+    imgsrc:"images/cancer.png",
+    name:"Cancer Center",
+    description:"Medical Oncology,cancer surgeries,Chemotherapy"
+    
+  },
+  {
+    imgsrc:"images/nephrologist.png",
+    name:"Kidney Specialist",
+    description:"Dialysis,kidney transplant,kidney disease treatment."
+    
+  },
+  {
+    imgsrc:"images/babyhealth.png",
+    name:"Pediatric Servies",
+    description:"Psychology,speech pathology,Family counseling."
+    
+  },
+  {
+    imgsrc:"images/physical-therapy.png",
+    name:"Physiotherapy",
+    description:"Manual Therapy,Sports Rehabilitation,pain care."  
   },
   
 ];

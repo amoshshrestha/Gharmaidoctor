@@ -30,10 +30,11 @@ const BookAppointments =()=>{
             Authorization: "Bearer " + localStorage.getItem("token"),
           },
         }
+        
       );
       if (res.data.success) {
         setDoctors(res.data.data);
-        console.log(res);
+        console.log(res.data);
       }
     } catch (error) {
       console.log(error);

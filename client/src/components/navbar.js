@@ -46,7 +46,7 @@ function Navmain() {
     <Navbar fixed='top' bg="light" expand="lg" >
       <Container fluid>
         <Navbar.Brand>
-          <Image src="images/logofinale.png" width='265' height='53'/>
+          <Image src="http://localhost:8080/images/logofinale.png" width='265' height='53'/>
           </Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav"  />
         <Navbar.Collapse id="basic-navbar-nav" className='justify-content-end ' >

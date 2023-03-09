@@ -44,7 +44,10 @@ const userSchema = new mongoose.Schema({
   date:{
     type:String,
   },
- 
+ phno:{
+  type:Number,
+  
+ },
   isAdmin: {
     type: Boolean,
     default: false,
@@ -63,6 +66,10 @@ const userSchema = new mongoose.Schema({
   },
   citizenship:{
     type:String,
+  },
+  status: {
+    type: String,
+    default: "pending",
   },
   Reports:{
     type:[recordsSchema]

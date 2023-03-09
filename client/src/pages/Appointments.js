@@ -65,8 +65,8 @@ const Appointments = () => {
   return (
     <div>
       <Navmain />
-      <h1 style={{"paddingTop":"80px"}}>Appointments Lists</h1>
-      <Table columns={columns} dataSource={appointments} />
+      <h1 style={{"paddingTop":"90px"}}>Appointments Lists</h1>
+      <Table style={{"marginTop":"90px"}} columns={columns} dataSource={appointments} />
     </div>
   );
 };

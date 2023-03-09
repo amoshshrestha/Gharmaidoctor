@@ -20,6 +20,7 @@ import BookAppointments from "./pages/bookappointment";
 import Viewrecords from "./pages/viewrecords";
 import Medicalreport from "./pages/medicalrecord";
 import Confirm from "./pages/confirmation";
+import Navmain from "./components/navbar";
 function App() {
   const { loading } = useSelector((state) => state.alerts);
   return (
@@ -113,6 +114,7 @@ function App() {
               path="/doctor/book-appointment/:doctorId"
               element={
                 <ProtectedRoute>
+                  <Navmain />
                   <BookingPage />
                 </ProtectedRoute>
               }
