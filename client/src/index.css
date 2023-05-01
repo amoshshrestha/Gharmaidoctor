@@ -3,7 +3,8 @@
   margin: 0;
   box-sizing: border-box;
 }
-
+@import url('https://fonts.googleapis.com/css?family=Castoro Titling');
+@import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro:regular,bold,italic&subset=latin,latin-ext');
 /* loader */
 .spinner {
   height: 100vh;

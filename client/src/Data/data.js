@@ -11,16 +11,8 @@ export const userMenu = [
     path: "/bookappointment",
     
   },
-  {
-    name: "My Appointments",
-    path: "/appointments",
-    icon: "fa-solid fa-list",
-  },
-  {
-    name: "Apply Doctor",
-    path: "/apply-doctor",
-    icon: "fa-solid fa-user-doctor",
-  },
+  
+ 
  
 ];
 

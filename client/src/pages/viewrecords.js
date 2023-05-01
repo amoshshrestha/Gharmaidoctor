@@ -28,6 +28,7 @@ const Viewrecords = () => {
                                 <th>Medicine Prescribed</th>
                                 <th>Follow up Date</th>
                                 <th>Follow-up Time</th>
+                                <th>view reports</th>
                             </tr>
 
                         </thead>
@@ -39,6 +40,7 @@ const Viewrecords = () => {
                                 <th>{data.medicine}</th>
                                 <th>{data.date}</th>
                                 <th>{data.time}</th>
+                                <th> <a href={`http://localhost:8080/${data.report}`}><button className="btn btn-primary" >report</button></a></th>
                             </tr>))}
                         </tbody>
                     </table>

@@ -12,7 +12,7 @@ const ApplyDoctor = () => {
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  //handle form
+  
   const handleFinish = async (values) => {
     try {
       dispatch(showLoading());
@@ -133,7 +133,7 @@ const ApplyDoctor = () => {
           </Col>
           <Col xs={24} md={24} lg={8}>
             <Form.Item
-              label="Fees Per Cunsaltation"
+              label="Fees Per Consultation"
               name="feesPerCunsaltation"
               required
               rules={[{ required: true }]}

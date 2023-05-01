@@ -9,14 +9,14 @@ const Layout = ({ children }) => {
   const { user } = useSelector((state) => state.user);
   const location = useLocation();
   const navigate = useNavigate();
-  // logout funtion
+  
   const handleLogout = () => {
     localStorage.clear();
     message.success("Logout Successfully");
     navigate("/login");
   };
 
-  // =========== doctor menu ===============
+ 
   const doctorMenu = [
     {
       name: "Home",
@@ -35,9 +35,7 @@ const Layout = ({ children }) => {
       icon: "fa-solid fa-user",
     },
   ];
-  // =========== doctor menu ===============
-
-  // redering menu list
+  
   const SidebarMenu = user?.isAdmin
     ? adminMenu
     : user?.isDoctor

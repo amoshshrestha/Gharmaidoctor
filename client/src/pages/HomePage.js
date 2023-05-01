@@ -6,7 +6,7 @@ import DoctorList from "../components/DoctorList";
 import Navmain from "../components/navbar";
 const HomePage = () => {
   const [doctors, setDoctors] = useState([]);
-  // login user data
+ 
   const getUserData = async () => {
     try {
       const res = await axios.get(

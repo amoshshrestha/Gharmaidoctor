@@ -35,14 +35,16 @@ app.use("/api/v1/user", require("./routes/userRoutes"));
 app.use("/api/v1/admin", require("./routes/adminRoutes"));
 app.use("/api/v1/doctor", require("./routes/doctorRoutes"));
 app.use('/images',express.static('./images'))
+
 app.post('/newrecords', async (req, res) => {
   let records = new userModel(req.body);
   let result = await records.save();
   res.send(result)
 
 })
-app.post("/:id/reports", async (req, res) => {
+app.post("/:id/reports1",upload.single('reportfile') ,async (req, res) => {
   const { hospital, reportNo, disease, medicine, date, time } = req.body;
+  const report=req.file.path;
   
   try {
     const user = await userModel.findById(req.params.id);
@@ -58,6 +60,7 @@ app.post("/:id/reports", async (req, res) => {
       medicine,
       date,
       time,
+      report,
     };
     
 
@@ -71,19 +74,26 @@ app.post("/:id/reports", async (req, res) => {
   }
 });
 
-app.post('/citizenshipfie',upload.single('citizenship'),(req,res)=>{
-  console.log("called")
-  let data=new userModel({
-      citizenship:req.file.path,
-  })
-  data.save()
+app.post('/:id/reports',upload.single('report'),async(req,res)=>{
+  const user = await userModel.findById(req.params.id);
+  let newRecord={
+    hospital:req.body.hospital,
+    reportNo:req.body.reportNo,
+    disease:req.body.disease,
+    medicine:req.body.medicine,
+    date:req.body.date,
+    time:req.body.time,
+    report:req.file.path
+  }
+  user.Reports.push(newRecord);
+  user.save()
   .then(result=>{
       res.send("succesfully added")
   })
   .catch(error=>{
       console.log(error)
   })
-})
+}) 
 app.post('/citizenshipfile',upload.single('citizenship'),(req,res)=>{
   let data=new userModel ({
       name:req.body.name,
@@ -101,7 +111,7 @@ app.post('/citizenshipfile',upload.single('citizenship'),(req,res)=>{
       console.log(error)
   })
 })   
- 
+
 
 
 app.get('/:id/viewrecords', async (req, res) => {
