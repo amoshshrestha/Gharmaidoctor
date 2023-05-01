@@ -10,7 +10,7 @@ import Image from "react-bootstrap/esm/Image";
 const Login = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  //form handler
+
   const onfinishHandler = async (values) => {
     try {
       dispatch(showLoading());

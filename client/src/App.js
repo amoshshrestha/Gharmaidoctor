@@ -24,6 +24,8 @@ import Navmain from "./components/navbar";
 import OnlineConsultation from "./pages/consultation";
 import Specialitypage from "./pages/specialitybooking";
 import DoctorConsult from "./pages/doctor/doctorconsultation";
+
+import './index.css'
 function App() {
   const { loading } = useSelector((state) => state.alerts);
   return (

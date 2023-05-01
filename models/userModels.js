@@ -20,7 +20,10 @@ const recordsSchema = new mongoose.Schema({
   },
   time: {
       type: String
-  }
+  },
+  report:{
+    type: String
+  },
 
 });
 

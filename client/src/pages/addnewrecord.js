@@ -3,28 +3,33 @@ import './style.css';
 import Navmain from "../components/navbar";
 import Footer from "../components/footer";
 import { useNavigate } from "react-router-dom";
-
-
+import axios from "axios";
+import { useDispatch } from "react-redux";
+import { Form, Input, message } from "antd";
+import { showLoading, hideLoading } from "../redux/features/alertSlice";
 function AddNewRecords() {
   const id=localStorage.getItem("id");
   const navigate = useNavigate();
-  
+  const dispatch = useDispatch();
   const [hospital, setHospital] = useState("");
   const [reportNo, setReportNo] = useState("");
   const [disease, setDisease] = useState("d1");
   const [medicine, setMedicine] = useState("");
-  const [report, setReport] = useState("");
+  const [report, setReport] = useState(undefined);
   const [date, setDate] = useState("");
   const [time, setTime] = useState("");
   const [otherDisease, setOtherDisease] = useState("");
   const [otherHospital, setOtherHospital] = useState("");
   
+  function handleImage(e) {
+    setReport(e.target.files[0]);
+  }
   const collectRecords = async () => {
     
     console.log(hospital, reportNo, disease, medicine, date, time);
     let result = await fetch(`http://localhost:8080/${id}/reports`, {
       method: 'post',
-      body: JSON.stringify({ hospital, reportNo, disease, medicine, date, time }),
+      body: JSON.stringify({ hospital, reportNo, disease, medicine, date, time,report}),
       headers: {
         'Content-Type': 'application/json'
       }
@@ -36,7 +41,38 @@ function AddNewRecords() {
     navigate("/medicalreport")
 
   };
+  const callapi = async(e) => {
 
+    try {
+      dispatch(showLoading());
+    
+    
+
+  const userobj = new FormData();
+    userobj.append("hospital", hospital);
+    userobj.append("reportNo", reportNo);
+    userobj.append("disease", disease);
+    userobj.append("medicine", medicine);
+    userobj.append("date", date);
+    userobj.append("time", time);
+    userobj.append("report", report);
+    const res= await axios.post(`http://localhost:8080/${id}/reports`, userobj)
+
+      dispatch(hideLoading());
+      
+
+      if (res.data.success) {
+        message.success("Register Successfully!");
+        navigate("/addnewrecords");
+      } else {
+        message.error(res.data.message);
+      }
+    } catch (error) {
+      dispatch(hideLoading());
+      console.log(error);
+      message.error("Something Went Wrong");
+    }
+  }
 
 
 
@@ -124,17 +160,17 @@ function AddNewRecords() {
           />
 
           <div className="form-group">
-            <label htmlFor="Report" className="form-label">
-              Scan Copy of Report:
-            </label>
-            <br />
-            <input
-              type="file"
-              className="form-control-file"
-              id="Report"
-              value={report}
-              onChange={(e) => setReport(e.target.value)}
-            />
+          <label htmlFor="Medicine" className="form-label">
+            Medicine Prescribed
+          </label>
+          <input
+        required
+          className="form-control"
+          type="file"
+          name="report"
+          onChange={handleImage}
+        />
+        
           </div>
 
           <label htmlFor="date" className="form-label">
@@ -160,7 +196,7 @@ function AddNewRecords() {
           />
 
           <div className="mt-3">
-            <button type="Button" className="btn btn-secondary" onClick={collectRecords}>
+            <button type="Button" className="btn btn-secondary" onClick={callapi}>
               Add Record
             </button>
           </div>

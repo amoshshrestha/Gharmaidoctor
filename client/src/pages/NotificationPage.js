@@ -67,7 +67,7 @@ const NotificationPage = () => {
   return (
     <div>
       <Navmain/>
-      <h4 className="p-3 text-center">Notification Page</h4>
+      <h4 className="p-3 text-center" style={{paddingTop:"60px"}}>Notification Page</h4>
       <Tabs>
         <Tabs.TabPane tab="unRead" key={0}>
           <div className="d-flex justify-content-end">
@@ -76,9 +76,9 @@ const NotificationPage = () => {
             </h4>
           </div>
           {user?.notifcation.map((notificationMgs) => (
-            <div className="card" style={{ cursor: "pointer" }}>
+            <div className="card" style={{ cursor: "pointer",width:"80%",height:"50px",marginLeft:"50px",alignItems:"center"}}>
               <div
-                className="card-text"
+                className="card-text" style={{fontSize:"20px",fontFamily:"Shantell Sans"}}
                 onClick={() => navigate(notificationMgs.onClickPath)}
               >
                 {notificationMgs.message}

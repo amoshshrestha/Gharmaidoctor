@@ -44,7 +44,8 @@ const Specialitypage = () => {
   }, []);
   return (
     <div>
-     <Row>
+        <Navmain  />
+     <Row style={{paddingTop:"90px"}}>
         {doctors && doctors.map((doctor) => <Doctorcard doctor={doctor} />)}
       </Row>
     </div>

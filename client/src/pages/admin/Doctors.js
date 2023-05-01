@@ -66,6 +66,14 @@ const Doctors = () => {
       dataIndex: "phone",
     },
     {
+      title: "Nmc no.",
+      dataIndex: "Nmcno",
+    },
+    {
+      title: "Address",
+      dataIndex: "address",
+    },
+    {
       title: "Actions",
       dataIndex: "actions",
       render: (text, record) => (

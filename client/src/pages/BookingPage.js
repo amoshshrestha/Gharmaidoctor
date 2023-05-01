@@ -16,7 +16,7 @@ const BookingPage = () => {
   const [time, setTime] = useState();
   const [isAvailable, setIsAvailable] = useState(false);
   const dispatch = useDispatch();
-  // login user data
+  
   const getUserData = async () => {
     try {
       const res = await axios.post(
@@ -35,7 +35,7 @@ const BookingPage = () => {
       console.log(error);
     }
   };
-  // ============ handle availiblity
+ 
   const handleAvailability = async () => {
     try {
       dispatch(showLoading());
@@ -61,7 +61,7 @@ const BookingPage = () => {
       console.log(error);
     }
   };
-  // =============== booking func
+  
   const handleBooking = async () => {
     try {
       setIsAvailable(true);
@@ -106,7 +106,7 @@ const BookingPage = () => {
 
   useEffect(() => {
     getUserData();
-    //eslint-disable-next-line
+    
   }, []);
   return (
     <div>
@@ -141,12 +141,7 @@ const BookingPage = () => {
                 }}
               />
 
-              <button
-                className="btn btn-primary mt-2"
-                onClick={handleAvailability}
-              >
-                Check Availability
-              </button>
+             
 
               <button className="btn btn-dark mt-2" onClick={handleBooking}>
                 Book Now
